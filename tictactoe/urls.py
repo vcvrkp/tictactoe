@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
-from .views import welcome
+from .views import welcome, upload_file
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('welcome/', welcome),
     url(r'^admin/', admin.site.urls),
+    url(r'^upload/', upload_file),
     url(r'^player/', include('player.urls')),
     url(r'^games/', include('gameplay.urls')),
     url(r'^$', welcome,name="tictactoe_welcome"),

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    Upload File example
+{% endblock title %}
+
+{% block content %}
+    <div class="well col-md-6">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" name="accept" value="submit">Upload</button>
+        </form>
+    </div>
+{% endblock content %}
