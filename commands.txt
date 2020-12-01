@@ -1,0 +1,237 @@
+Microsoft Windows [Version 10.0.17763.1518]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py showmigrations
+admin
+ [ ] 0001_initial
+ [ ] 0002_logentry_remove_auto_add
+ [ ] 0003_logentry_add_action_flag_choices
+auth
+ [ ] 0001_initial
+ [ ] 0002_alter_permission_name_max_length
+ [ ] 0003_alter_user_email_max_length
+ [ ] 0004_alter_user_username_opts
+ [ ] 0005_alter_user_last_login_null
+ [ ] 0006_require_contenttypes_0002
+ [ ] 0007_alter_validators_add_error_messages
+ [ ] 0008_alter_user_username_max_length
+ [ ] 0009_alter_user_last_name_max_length
+ [ ] 0010_alter_group_name_max_length
+ [ ] 0011_update_proxy_permissions
+ [ ] 0012_alter_user_first_name_max_length
+contenttypes
+ [ ] 0001_initial
+ [ ] 0002_remove_content_type_name
+sessions
+ [ ] 0001_initial
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>django manage.py startapp gameplay
+'django' is not recognized as an internal or external command,
+operable program or batch file.
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py startapp gameplay
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>cd gameplay
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay>dir
+ Volume in drive C is OS
+ Volume Serial Number is 6C99-9009
+
+ Directory of C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay
+
+11/30/2020  19:26    <DIR>          .
+11/30/2020  19:26    <DIR>          ..
+11/30/2020  19:26                66 admin.py
+11/30/2020  19:26                96 apps.py
+11/30/2020  19:26    <DIR>          migrations
+11/30/2020  19:26                60 models.py
+11/30/2020  19:26                63 tests.py
+11/30/2020  19:26                66 views.py
+11/30/2020  19:26                 0 __init__.py
+               6 File(s)            351 bytes
+               3 Dir(s)  33,820,913,664 bytes free
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay>cd ..
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py makemigrations
+Traceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    main()
+  File "manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 377, in execute
+    django.setup()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Python\Python38\Lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 6, in <module>
+    class Game(models.Model):
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 7, in Game
+    first_player = models.ForeignKey(User,related_name="games_first_player")
+TypeError: __init__() missing 1 required positional argument: 'on_delete'
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py makemigrations
+Traceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    main()
+  File "manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 377, in execute
+    django.setup()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Python\Python38\Lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 6, in <module>
+    class Game(models.Model):
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 7, in Game
+    first_player = models.ForeignKey(User,related_name="games_first_player",on_delete=True)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\db\models\fields\related.py", line 813, in __init__
+    raise TypeError('on_delete must be callable.')
+TypeError: on_delete must be callable.
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py makemigrations
+Traceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    main()
+  File "manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 377, in execute
+    django.setup()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Python\Python38\Lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 12, in <module>
+    class Move(models.Model):
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 17, in Move
+    game=models.ForeignKey(Game,on_delete=models.CASCADE())
+TypeError: CASCADE() missing 4 required positional arguments: 'collector', 'field', 'sub_objs', and 'using'
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py makemigrations
+Traceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    main()
+  File "manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\core\management\__init__.py", line 377, in execute
+    django.setup()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\gitrepos\devOPS\mywlmtracker\django-env\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Python\Python38\Lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 6, in <module>
+    class Game(models.Model):
+  File "C:\gitrepos\devOPS\mywlmtracker\tictactoe\gameplay\models.py", line 7, in Game
+    first_player = models.ForeignKey(User,related_name="games_first_player",on_delete=models.CASCADE())
+TypeError: CASCADE() missing 4 required positional arguments: 'collector', 'field', 'sub_objs', and 'using'
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py makemigrations
+Migrations for 'gameplay':
+  gameplay\migrations\0001_initial.py
+    - Create model Game
+    - Create model Move
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py sqlmigrate gameplay 0001
+BEGIN;
+--
+-- Create model Game
+--
+CREATE TABLE "gameplay_game" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "start_time" datetime NOT NULL, "last_active" datetime NOT NULL, "first_player_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFE
+RRABLE INITIALLY DEFERRED, "second_player_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model Move
+--
+CREATE TABLE "gameplay_move" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "x" integer NOT NULL, "y" integer NOT NULL, "comment" varchar(300) NOT NULL, "by_first_player" bool NOT NULL, "game_id" integer NOT NU
+LL REFERENCES "gameplay_game" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "gameplay_game_first_player_id_6c38fd8d" ON "gameplay_game" ("first_player_id");
+CREATE INDEX "gameplay_game_second_player_id_1747c029" ON "gameplay_game" ("second_player_id");
+CREATE INDEX "gameplay_move_game_id_9147ef33" ON "gameplay_move" ("game_id");
+COMMIT;
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, gameplay, sessions
+Running migrations:
+  Applying gameplay.0001_initial... OK
+
+(django-env) C:\gitrepos\devOPS\mywlmtracker\tictactoe>
+tictactoe$ python manage.py makemigrations
+tictactoe$ python manage.py migrate
+
