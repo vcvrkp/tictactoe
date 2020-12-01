@@ -8,4 +8,5 @@ These are your active games:
     <li>Game {{g.id}}: <b>{{g.first_player}}</b> vs <b>{{g.second_player}}</b> with status {{g.status}} </li>
 {% endfor %}
 </ul>
+<a href="{% url 'player_new_invitation' %}">Invite another user to play a game</a>
 {% endblock %}
