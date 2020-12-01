@@ -12,11 +12,9 @@
 <div class="row">
     <div class="col-md-6">
         <h3>Active Games</h3>
-        <ul>
-        {% for g in games %}
-            <li>Game {{g.id}}: <b>{{g.first_player}}</b> vs <b>{{g.second_player}}</b> with status {{g.status}} </li>
-        {% endfor %}
-        </ul>
+        {% include "player/gamelist_snippet.html" with game_list=active_games %}
+        <h3>Finished Games</h3>
+        {% include "player/gamelist_snippet.html" with game_list=old_games %}
         <p>Click below to invite someone to play with you.</p>
         <p>
             <a  class="btn btn-primary" href="{% url 'player_new_invitation' %}">Start a game</a>

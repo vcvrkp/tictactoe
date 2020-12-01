@@ -14,9 +14,11 @@ def home(request):
     # all_games = list(g_f_p) + list(g_s_p)
     my_games = Game.objects.games_for_user(request.user)
     active = my_games.active()
+    old_games = my_games.difference(active)
     invitations = request.user.invitations_recieved.all()
     dcontext = {}
     dcontext['games'] = active
+    dcontext['old_games'] = old_games
     dcontext['invitations'] = invitations
     return render(request=request, template_name="player/home.html",
                   context=dcontext)
