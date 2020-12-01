@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 BOARD_SIZE = 3
@@ -55,9 +56,22 @@ class Game(models.Model):
     def is_users_move(self, user):
         return (user == self.first_player and self.status == 'F') or (user == self.second_player and self.status == 'S')
 
+    def new_move(self):
+        """Returns new move object with player, game, and count present"""
+        if self.status not in 'FS':
+            raise ValueError("Cannot make move on finished game.")
+        return Move(
+            game=self,
+            by_first_player = self.status == 'F'
+        )
+
 class Move(models.Model):
-    x = models.IntegerField()
-    y = models.IntegerField()
+    x = models.IntegerField(
+        validators=[MinValueValidator(0),MaxValueValidator(BOARD_SIZE-1)]
+    )
+    y = models.IntegerField(
+        validators=[MinValueValidator(0),MaxValueValidator(BOARD_SIZE-1)]
+    )
     comment = models.CharField(max_length=300, blank=True)
     by_first_player = models.BooleanField(editable=False,default=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,editable=False)
