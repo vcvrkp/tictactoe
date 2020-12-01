@@ -6,6 +6,9 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
+BOARD_SIZE = 3
+
 GAME_STATUS_CHOICES = (
     ('F', 'First Player to Move'),
     ('S', 'Second Player to Move'),
@@ -42,10 +45,19 @@ class Game(models.Model):
     def __str__(self):
         return "{0} vs {1}".format(self.first_player, self.second_player)
 
+    def board(self):
+        """Returns a 2 Dimensional list of Move Objects"""
+        board = [[None for x in range(BOARD_SIZE)]for y in range(BOARD_SIZE)]
+        for move in self.move_set.all():
+            board[move.x][move.y] = move
+        return board
+
+    def is_users_move(self, user):
+        return (user == self.first_player and self.status == 'F') or (user == self.second_player and self.status == 'S')
 
 class Move(models.Model):
     x = models.IntegerField()
     y = models.IntegerField()
     comment = models.CharField(max_length=300, blank=True)
-    by_first_player = models.BooleanField()
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    by_first_player = models.BooleanField(editable=False,default=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE,editable=False)
